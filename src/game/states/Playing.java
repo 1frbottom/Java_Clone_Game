@@ -81,8 +81,8 @@ public class Playing extends Gamestate {
 
 		spawnEnemiesTimer = new Timer(4.0, 3.0, e -> {spawnEnemies();});
 		spawnObstacleTimer = new Timer(5.0, 0, e -> {spawnObstacle();});
-		speedUpTimer = new Timer(1.0, e -> {speedUp();});
-		levelUpTimer = new Timer(15.0, e -> {levelUp();});
+		speedUpTimer = new Timer(0.5, e -> {speedUp();});
+		levelUpTimer = new Timer(7.0, e -> {levelUp();});
 		
 		timers.add(spawnEnemiesTimer);
 		timers.add(spawnObstacleTimer);
