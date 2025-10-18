@@ -1,4 +1,4 @@
-# Java Game Programming
+# Java Clone Game
 
 - 라인게임즈 사의 종스크롤 탄막 슈팅 게임인 드래곤 플라이트의 단순화 모작입니다.<br><br>
 
