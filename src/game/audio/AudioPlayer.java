@@ -25,7 +25,7 @@ public class AudioPlayer {
 
 	private static String[] effectNames = { "enemy_death", "siren", "fireball" };
 	
-    private float volume = 0.8f;
+    private float volume = 0.5f;
 
 	public AudioPlayer() {
 		loadSongs();

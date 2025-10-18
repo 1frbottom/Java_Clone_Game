@@ -56,8 +56,8 @@ public class Player extends Entity {
 		hitboxs.add(wingHitbox);
 		
 		fireTimer = new Timer(0.08, e -> {fire();});
-		invisibleTimer = new Timer(2.0);
-		invincibleTimer = new Timer(2.0);
+		invisibleTimer = new Timer(1.0);
+		invincibleTimer = new Timer(1.0);
 		blinkTimer = new Timer(0.2);
 		
 		List<Timer> t = gsm.getPlaying().getTimers();
