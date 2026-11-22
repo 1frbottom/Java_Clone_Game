@@ -1,16 +1,39 @@
 # Java Clone Game
 
-- 라인게임즈 사의 종스크롤 탄막 슈팅 게임인 드래곤 플라이트의 단순화 모작입니다.<br><br>
+> Java 종스크롤 슈팅 모작 게임 (교내 프로젝트)
 
-- 2024.03 ~ 2024.06 / 3인 개발입니다.<br><br>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/483934f5-500e-42bd-9590-93aa69fa0205" width="600" />
+</p>
 
-- 자바의 awt 및 swing 사용하였습니다.<br><br>
+* 유튜브 ([Preview](https://youtu.be/K3EYV_3hiXY))
 
-- 프리뷰<br>
-  - https://www.youtube.com/watch?v=K3EYV_3hiXY<br><br>
+<br>
 
-- 실행방법<br>
-  - src/game/main/GameLanucher.java 실행<br><br>
+## 프로젝트 개요
 
-- 조작방법<br>
-  - 좌우 방향키
+* **개발 기간 :** 2024.03 ~ 2024.06
+* **개발 인원 :** 3명 (3 Developer)
+* **사용 기술 :** Java / AWT / Swing
+
+<br>
+
+## 핵심 구현
+
+### 1. Playing State 세부 로직
+
+* 유도 장애물 : 플레이어와의 거리 차에 비례한 가속도 보간으로 관성 표현
+* 몬스터 스폰 : ArrayList 기반 스폰 로직
+* 객체 관리 : 상태 변화에 따른 메모리 해제 및 렌더링 설계
+
+<br>
+
+## 트러블슈팅
+
+### 유도 장애물 보간 시 진동 현상
+
+* **문제 :** 유도 장애물이 목표 위치에 도달해도 멈추지 않고 좌우로 심하게 떨림
+* **원인 :** x축 거리에 비례해 속도를 더하는 구조(`velocity += dx * coefficient`)라서, 거리가 0이 돼도 이미 쌓인 횡이동 속도(관성)가 남아 있음
+* **해결 :**
+  * dx가 임계값(`20.0f`) 안으로 들어오면 마찰(Damping) 로직이 켜지도록 함
+  * 정렬이 거의 끝나면 매 프레임 x축 속도에 감속 계수(`0.95f`)를 곱해 관성을 줄이고, 플레이어를 부드럽게 따라 내려오게 함
